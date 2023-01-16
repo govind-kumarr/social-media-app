@@ -11,42 +11,29 @@ UserRoutes.get("/", async (req, res) => {
 UserRoutes.post("/create", async (req, res) => {
   const { title, body, device } = req.body;
   try {
-    const new_post = new PostModel({
+    const new_user = new PostModel({
       title,
       body,
       device,
     });
-    await new_post.save();
-    res.send("saved new post");
+    await new_user.save();
+    res.send("created user");
   } catch (error) {
     console.log(error);
-    res.send("Error occured while creating new post");
+    res.send("error occured while creating user");
   }
 });
 
-//update
 UserRoutes.patch("/update/:post", async (req, res) => {
   const postid = req.params.postid;
 
   try {
     await PostModel.findByIdAndUpdate(postid, req.body);
-    res.send("Sending Update Request");
+    res.send("sending update req");
   } catch (error) {
     console.log(error);
-    res.send("Error Occured");
+    res.send("Error occured whie updating");
   }
 });
 
-//delete
-UserRoutes.delete("/delete/:post", async (req, res) => {
-  const postid = req.params.postid;
-
-  try {
-    await PostModel.findByIdAndDelete(postid, req.body);
-    res.send("Deleting Post");
-  } catch (error) {
-    console.log(error);
-    res.send("Error Occured while Deleting post");
-  }
-});
 module.exports = { UserRoutes };
