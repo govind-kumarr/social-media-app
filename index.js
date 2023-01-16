@@ -58,7 +58,7 @@ app.post("/login", async (req, res) => {
 
 const authentication = (req, res, next) => {
   if (!req.headers.token) {
-    return res.send({ response: "user not logged in" });
+    return res.send({ response: "no user found" });
   }
   const user_token = req.headers.token;
   jwt.verify(user_token, process.env.secret, function (err, decoded) {
