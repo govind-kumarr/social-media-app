@@ -1,9 +1,9 @@
 const express = require("express");
-const { connection } = require("./config/db");
+const { connection } = require("./config/dbinfo");
 const jwt = require("jsonwebtoken");
 const cors = require("cors");
 const { UserRegisterModel } = require("./models/registerModel");
-const { UserRoutes } = require("./routes/user.route");
+const { UserRoutes } = require("./routes/userRoutes");
 const { homeRoute } = require("./controllers/home");
 const { registerUser, loginUser } = require("./controllers/userMethods");
 require("dotenv").config();
